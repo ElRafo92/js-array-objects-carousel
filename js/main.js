@@ -22,15 +22,63 @@ const images = [
     }
 ];
 
-const arrayContainer = document.querySelector('.array-container');
-//console.log(arrayContainer)
-
+const imagesList = document.querySelector('.images-list');
+//console.log(imagesList)
 for(let i = 0; i < images.length; i++) {
-    const pics = images[i];
-    const imagesList = document.getElementById('template-images').content.cloneNode(true);
-    
-    imagesList.querySelector('.main-pic').src = pics.image;
-    
-    arrayContainer.append(imagesList)
-    
+    const imagesObject = images[i];
+
+    const box = document.createElement('div');
+    box.classList.add('box');
+
+        const prev = document.createElement('div');
+        prev.classList.add('precedente');
+        box.append(prev);
+
+            const prevBtn = document.createElement('i');
+            prevBtn.classList.add('fa-solid', 'fa-chevron-up');
+            prev.append(prevBtn);
+
+        const imageContainer = document.createElement('div');
+        imageContainer.classList.add('image-container');
+        box.append(imageContainer);
+
+            const img = document.createElement('img')
+            img.setAttribute('src', imagesObject.image );
+            imageContainer.append(img);
+            
+            const imageData = document.createElement('div')
+            imageData.classList.add('image-data');
+            imageContainer.append(imageData);
+
+                const titleData = document.createElement('div')
+                titleData.classList.add('title-data');
+                imageData.append(titleData);
+
+                    const titlePic = document.createElement('h1');
+                    titlePic.classList.add('title-pic');
+                    titlePic.innerHTML = imagesObject.title;
+                    titleData.append(titlePic);
+
+                const textData = document.createElement('div')
+                textData.classList.add('text-data');
+                imageData.append(textData);
+
+                    const textPic = document.createElement('h3');
+                    textPic.classList.add('text-pic');
+                    textPic.innerHTML = imagesObject.text;
+                    textData.append(textPic);
+
+        const next = document.createElement('div');
+        next.classList.add('prossimo');
+        box.append(next);
+
+            const nextBtn = document.createElement('i');
+            nextBtn.classList.add('fa-solid', 'fa-chevron-down');
+            next.append(nextBtn);
+
+
+
+
+
+    imagesList.append(box);
 }
