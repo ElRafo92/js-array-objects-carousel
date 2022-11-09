@@ -80,7 +80,7 @@ for(let i = 0; i < images.length; i++) {
             const nextBtn = document.createElement('i');
             nextBtn.classList.add('fa-solid', 'fa-chevron-down');
             next.append(nextBtn);
-//evento click next
+//evento click next con evento infinito
 let indexImg = 0;
 const imageContainer = document.querySelector('.image-container');
 imageContainer.classList.add('mostra');
@@ -95,7 +95,7 @@ next.addEventListener('click', function() {
     };
     imgContAll[indexImg].classList.add('mostra');
 });
-//evento click prev
+//evento click prev con evento infinito
 prev.addEventListener('click', function() {
     imgContAll[indexImg].classList.remove('mostra');
     if (indexImg === images.length -1) {
