@@ -9,13 +9,17 @@
     padding: 0;
 }
 
+body {
+    background-color: grey;
+}
+
 /* ================
    ================
       UTILITIES
    ================ 
    ================ */
 .images-list {
-    width: 56.25rem;
+    max-width: 56.25rem;
     height: 100vh;
     margin: auto;
     display: flex;
@@ -23,9 +27,8 @@
 }
 
 .box {
-    position: relative;
-    width: 56.25rem;
-    height: 25rem;
+    width: 80%;
+    height: 40%;
 }
 
 .image-container {
@@ -33,6 +36,16 @@
     width: 100%;
     position: relative;
     display: none;
+}
+.thumbnail-box {
+position: relative;
+width: 20%;
+height: 40%;
+}
+.thumbnail-container {
+    width: 100%;
+    height: calc(100% / 5);
+    object-fit: cover;
 }
 
 .image-data {
@@ -89,4 +102,13 @@ img {
    ================ */
 .mostra {
     display: block;
+}
+
+/* ================
+   ================
+        STYLE
+   ================ 
+   ================ */
+h1,h3 {
+    text-shadow: 3px 3px 3px black;
 }

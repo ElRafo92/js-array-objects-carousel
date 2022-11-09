@@ -1,3 +1,9 @@
+/* ===============================
+==================================
+CREAZIONE ARRAY DATI
+==================================
+================================*/
+
 const images = [
     {
         image: 'img/01.webp',
@@ -22,20 +28,25 @@ const images = [
     }
 ];
 
+/* ===============================
+==================================
+CREAZIONE STRUTTURA PRINCIPALE
+==================================
+================================*/
 //contenitore
 const imagesList = document.querySelector('.images-list');
 //console.log(imagesList)
     
     const box = document.createElement('div');
     box.classList.add('box');
-        //creazione bottone up
+        /*//creazione bottone up
         const prev = document.createElement('div');
         prev.classList.add('precedente');
         box.append(prev);
 
             const prevBtn = document.createElement('i');
             prevBtn.classList.add('fa-solid', 'fa-chevron-up');
-            prev.append(prevBtn);
+            prev.append(prevBtn);*/
 //lista immagini
 for(let i = 0; i < images.length; i++) {
     const imagesObject = images[i];
@@ -73,20 +84,65 @@ for(let i = 0; i < images.length; i++) {
     imagesList.append(box);
 }; //fine lista immagini
         //creazione bottone down
-        const next = document.createElement('div');
+        /*const next = document.createElement('div');
         next.classList.add('prossimo');
         box.append(next);
 
             const nextBtn = document.createElement('i');
             nextBtn.classList.add('fa-solid', 'fa-chevron-down');
-            next.append(nextBtn);
+            box.append(nextBtn);*/
+            
+/* ===============================
+==================================
+CREAZIONE STRUTTURA THUMBNAIL
+==================================
+================================*/
+//contenitore lista thumbnail
+const thumbnailBox = document.createElement('div');
+thumbnailBox.classList.add('thumbnail-box');
+//inizio lista thumbnail
+for(let i = 0; i < images.length; i++) {
+    const imagesObject = images[i];
+            //contenitore immagini thumbnail
+            const thumbnailContainer = document.createElement('div');
+            thumbnailContainer.classList.add('thumbnail-container', 'mostra');
+            thumbnailBox.append(thumbnailContainer);
+                //immagine
+                const thumbnailImg = document.createElement('img')
+                thumbnailImg.setAttribute('src', imagesObject.image );
+                thumbnailContainer.append(thumbnailImg);
+
+        imagesList.append(thumbnailBox);
+};//fine lista thumbnail
+const tprev = document.createElement('div');
+tprev.classList.add('precedente');
+thumbnailBox.append(tprev);
+
+    const tprevBtn = document.createElement('i');
+    tprevBtn.classList.add('fa-solid', 'fa-chevron-up');
+    tprev.append(tprevBtn);
+
+const tnext = document.createElement('div');
+tnext.classList.add('prossimo');
+thumbnailBox.append(tnext);
+
+    const tnextBtn = document.createElement('i');
+    tnextBtn.classList.add('fa-solid', 'fa-chevron-down');
+    tnext.append(tnextBtn);
+
+
+/* ===============================
+==================================
+CREAZIONE EVENTI
+==================================
+================================*/
 //evento click next con evento infinito
 let indexImg = 0;
 const imageContainer = document.querySelector('.image-container');
 imageContainer.classList.add('mostra');
 const imgContAll = document.querySelectorAll('.image-container');
 
-next.addEventListener('click', function() {
+tprev.addEventListener('click', function() {
     imgContAll[indexImg].classList.remove('mostra');
     if (indexImg === 0) {
         indexImg = images.length -1;
@@ -96,7 +152,7 @@ next.addEventListener('click', function() {
     imgContAll[indexImg].classList.add('mostra');
 });
 //evento click prev con evento infinito
-prev.addEventListener('click', function() {
+tnext.addEventListener('click', function() {
     imgContAll[indexImg].classList.remove('mostra');
     if (indexImg === images.length -1) {
         indexImg = 0;
@@ -105,4 +161,5 @@ prev.addEventListener('click', function() {
     };
     imgContAll[indexImg].classList.add('mostra');
 });
+
 
