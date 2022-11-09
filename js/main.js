@@ -22,14 +22,13 @@ const images = [
     }
 ];
 
+//contenitore
 const imagesList = document.querySelector('.images-list');
 //console.log(imagesList)
-for(let i = 0; i < images.length; i++) {
-    const imagesObject = images[i];
-
+    
     const box = document.createElement('div');
     box.classList.add('box');
-
+        //creazione bottone up
         const prev = document.createElement('div');
         prev.classList.add('precedente');
         box.append(prev);
@@ -37,19 +36,22 @@ for(let i = 0; i < images.length; i++) {
             const prevBtn = document.createElement('i');
             prevBtn.classList.add('fa-solid', 'fa-chevron-up');
             prev.append(prevBtn);
-
+//lista immagini
+for(let i = 0; i < images.length; i++) {
+    const imagesObject = images[i];
+        //contenitore immagini 
         const imageContainer = document.createElement('div');
         imageContainer.classList.add('image-container');
         box.append(imageContainer);
-
+            //immagine
             const img = document.createElement('img')
             img.setAttribute('src', imagesObject.image );
             imageContainer.append(img);
-            
+            //contenitore titolo + testo
             const imageData = document.createElement('div')
             imageData.classList.add('image-data');
             imageContainer.append(imageData);
-
+                //titolo
                 const titleData = document.createElement('div')
                 titleData.classList.add('title-data');
                 imageData.append(titleData);
@@ -58,7 +60,7 @@ for(let i = 0; i < images.length; i++) {
                     titlePic.classList.add('title-pic');
                     titlePic.innerHTML = imagesObject.title;
                     titleData.append(titlePic);
-
+                //testo
                 const textData = document.createElement('div')
                 textData.classList.add('text-data');
                 imageData.append(textData);
@@ -67,7 +69,10 @@ for(let i = 0; i < images.length; i++) {
                     textPic.classList.add('text-pic');
                     textPic.innerHTML = imagesObject.text;
                     textData.append(textPic);
-
+    //appendo al contenitore
+    imagesList.append(box);
+}; //fine lista immagini
+        //creazione bottone down
         const next = document.createElement('div');
         next.classList.add('prossimo');
         box.append(next);
@@ -75,10 +80,29 @@ for(let i = 0; i < images.length; i++) {
             const nextBtn = document.createElement('i');
             nextBtn.classList.add('fa-solid', 'fa-chevron-down');
             next.append(nextBtn);
+//evento click next
+let indexImg = 0;
+const imageContainer = document.querySelector('.image-container');
+imageContainer.classList.add('mostra');
+const imgContAll = document.querySelectorAll('.image-container');
 
+next.addEventListener('click', function() {
+    imgContAll[indexImg].classList.remove('mostra');
+    if (indexImg === 0) {
+        indexImg = images.length -1;
+    } else {
+        indexImg --;
+    };
+    imgContAll[indexImg].classList.add('mostra');
+});
+//evento click prev
+prev.addEventListener('click', function() {
+    imgContAll[indexImg].classList.remove('mostra');
+    if (indexImg === images.length -1) {
+        indexImg = 0;
+    } else {
+        indexImg ++;
+    };
+    imgContAll[indexImg].classList.add('mostra');
+});
 
-
-
-
-    imagesList.append(box);
-}

@@ -18,19 +18,21 @@
     width: 56.25rem;
     height: 100vh;
     margin: auto;
+    display: flex;
+    align-items: center;
 }
 
 .box {
     position: relative;
     width: 56.25rem;
     height: 25rem;
-    /* display: none; */
 }
 
 .image-container {
     height: 100%;
     width: 100%;
     position: relative;
+    display: none;
 }
 
 .image-data {
