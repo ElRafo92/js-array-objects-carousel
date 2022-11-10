@@ -133,9 +133,10 @@ thumbnailBox.append(tnext);
 
 /* ===============================
 ==================================
-CREAZIONE EVENTI
+CREAZIONE EVENTO CLICK BOTTONI
 ==================================
 ================================*/
+//CAMBIA TNEXT E TPREV IN NEXT E PREV PER RIADARE IL POWER AI VECCHI BOTTONI COMMENTATI
 //evento click next con evento infinito
 let indexImg = 0;
 const imageContainer = document.querySelector('.image-container');
@@ -143,8 +144,11 @@ imageContainer.classList.add('mostra');
 const imgContAll = document.querySelectorAll('.image-container');
 
 tprev.addEventListener('click', function() {
-    imgContAll[indexImg].classList.remove('mostra');
-    if (indexImg === 0) {
+    imgContAll.forEach(imgContAll => {
+        imgContAll.classList.remove('mostra');
+        });
+
+        if (indexImg === 0) {
         indexImg = images.length -1;
     } else {
         indexImg --;
@@ -153,7 +157,10 @@ tprev.addEventListener('click', function() {
 });
 //evento click prev con evento infinito
 tnext.addEventListener('click', function() {
-    imgContAll[indexImg].classList.remove('mostra');
+    imgContAll.forEach(imgContAll => {
+    imgContAll.classList.remove('mostra');
+    });
+    
     if (indexImg === images.length -1) {
         indexImg = 0;
     } else {
@@ -162,4 +169,21 @@ tnext.addEventListener('click', function() {
     imgContAll[indexImg].classList.add('mostra');
 });
 
+/* ===============================
+==================================
+CREAZIONE EVENTO CLICK THUMBNAIL
+==================================
+================================*/
 
+const thumbContain = document.querySelectorAll('.thumbnail-container');
+console.log(thumbContain)
+for (let i = 0; i < thumbContain.length; i++) {
+    const tImg = thumbContain[i];
+    tImg.addEventListener('click', function() {
+        imgContAll.forEach(imgContAll => {
+            imgContAll.classList.remove('mostra')
+        });
+        
+        imgContAll[i].classList.add('mostra')
+    })
+}
