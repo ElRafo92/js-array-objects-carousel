@@ -160,7 +160,7 @@ tnext.addEventListener('click', function() {
     imgContAll.forEach(imgContAll => {
     imgContAll.classList.remove('mostra');
     });
-    
+
     if (indexImg === images.length -1) {
         indexImg = 0;
     } else {
@@ -183,7 +183,31 @@ for (let i = 0; i < thumbContain.length; i++) {
         imgContAll.forEach(imgContAll => {
             imgContAll.classList.remove('mostra')
         });
-        
+
+        thumbContain.forEach(thumbContain => {
+            thumbContain.classList.remove('thumb-border')
+        });
+
+        thumbContain[i].classList.add('thumb-border')
         imgContAll[i].classList.add('mostra')
     })
 }
+
+/* ===============================
+==================================
+    CREAZIONE EVENTO AUTOPLAY   
+==================================
+================================*/
+
+setInterval(() => {
+        imgContAll.forEach(imgContAll => {
+        imgContAll.classList.remove('mostra');
+        });
+    
+        if (indexImg === images.length -1) {
+            indexImg = 0;
+        } else {
+            indexImg ++;
+        };
+        imgContAll[indexImg].classList.add('mostra');
+}, 3000);

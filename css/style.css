@@ -104,7 +104,9 @@ img {
 .mostra {
     display: block;
 }
-
+.thumb-border {
+    border: 0.1875rem solid white;
+}
 /* ================
    ================
         STYLE
